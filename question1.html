@@ -4,18 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="data:;base64,=">
-    <title>Question 1</title>
+    <title>Questions</title>
 </head>
 <body>
-    <p></p>
+    <nav id = "top">  
+            <a href="/highscores.html">Top Scores</a>
+            <p id = "timer"></p>
+    </nav>
+    
 
-    <h4>What is the data type for numbers:</h4>
+    <h4 id="question"></h4>
    
     <ul id = "unorderedlist" style="list-style-type:none;">
-   <li> <button id = "11" type="button"  class="btn btn-primary">Integer and BigInt</button></li>
-    <li><button  id = "12" type="button" class="btn btn-primary">Variable</button> </li>
-        <li><button  id = "13" type="button"  class="btn btn-primary">Char</button></li>
-           <li><button id = "14" type="button" class="btn btn-primary">Number and BigInt</button></li>
+   <li> <button id = "one" type="button"  class="btn btn-primary" value= 1></button></li>
+    <li><button  id = "two" type="button" class="btn btn-primary" value = 2></button> </li>
+        <li><button  id = "three" type="button"  class="btn btn-primary" value = 3></button></li>
+           <li><button id = "four" type="button" class="btn btn-primary" value = 4></button></li>
+
+     <!-- <button  id = "next" type="button"  class="btn btn-primary" value = 3>Next Question</button> -->
+
+           <p id ="feedback"></p>
            
            <script type="text/javascript" src="question1.js">
             //localStorage.setItem('question','question1');

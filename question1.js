@@ -1,53 +1,125 @@
 var theParent = document.querySelector("#unorderedlist");
 theParent.addEventListener("click", doSomething, false);
-var questionNumber = ["question2.html", "question3.html"];
-var timerElement = document.querySelector('p');
-localStorage.setItem('name','Chris');
-let question = -1;
-var correctAnswers = ["14", "21"];
-var t = 0;
 
 
-function whichQuestion(){
+var topElement = document.querySelector('#top');
+topElement.setAttribute("display","inline-block");
+console.log(topElement);
 
-    
+var timerElement = document.querySelector('#timer');
+console.log(timerElement);
+timerElement.setAttribute("display", "inline-block");
+
+var feedbackElement = document.querySelector('#feedback');
+//feedbackElement.textContent = "";   
+
+var t = 300;
+var i = 0;
+
+let highScores = [];
+
+let questions = [
+    {
+      question: "What is the type for a Integer?",
+      answers: ["Number", "Integer", "Number and BigInt", "Float"],
+      "correct": "three"
+    },
+    {
+      question: "Why does Java and Javascript have similar names?",
+      answers: ["JavaScript is a stripped-down version of Java", "JavaScript’s syntax is loosely based on Java’s", "They both originated on the island of Java", "None of the above"],
+      correct: "two"
+    },
+
+    {
+        question: "The JavaScript syntax defines two types of values:",
+        answers: ["Fixed and Variable", "Float and Integer", "local and global", "array and object"],
+        correct: "one"
+      },
+
+      {
+        question: "Strings are text:",
+        answers: ["Written with []","written within double or single quotes", "Written with .", "Written with curly braces"],
+        correct: "two"
+      },
+
+      {
+        question: "What is the assignment operator in Javascript:",
+        answers: ["==", "===", "!=", "="],
+        correct: "four"
+      }
+   ]
+   
+loadQuestion(i);
+
+function loadQuestion(i){  
+      
+    var theParent = document.querySelector("h4");
+    var answerOne = document.querySelector("#one");
+    console.log(answerOne)
+    var answerTwo = document.querySelector("#two");
+    var answerThree = document.querySelector("#three");
+    var answerFour = document.querySelector("#four");
+    //console.log(theParent);
+    theParent.textContent = questions[i].question;
+    answerOne.innerHTML= questions[i].answers[0];
+    answerTwo.innerHTML = questions[i].answers[1];
+    answerThree.innerHTML = questions[i].answers[2];
+    answerFour.innerHTML = questions[i].answers[3];
 }
 
+
 a = setInterval(function() { 
-    t++;
+    t--;
     //console.log(t);
-    console.log(timerElement);
+    //console.log(timerElement);
     timerElement.textContent=t;
     if(t === 0){clearInterval(a)}
      }, 1000);
     
-
-
-function doSomething(e) {
+ function doSomething(e) {
     e.preventDefault();
     //startTimer();
-    question += 1;
     if (e.target !== e.currentTarget) {
         var clickedItem = e.target.id;
-        console.log(clickedItem);
-        console.log(typeof(clickedItem))
-            for(let i = 0; i < correctAnswers.length; i++){
-                if (clickedItem === correctAnswers[i]){
-                    console.log(clickedItem);
-                    alert("Correct Answer " + clickedItem);
-                    break;
+        //console.log(clickedItem);
+        //console.log(typeof(clickedItem))
+           
+                if (clickedItem === questions[i].correct){
+                    console.log(i);
+                    //console.log(clickedItem);
+                    feedbackElement.textContent = "Correct";
+                    //alert("Correct Answer " + clickedItem);
+                                  }
+         else {  
+            feedbackElement.textContent = "Wrong";  
+            t -= 10;   
+            }
+
+            setTimeout(function() {
+                feedbackElement.textContent = "";  
+                if (i < questions.length-1){
+                    i++;
+                    loadQuestion(i);
                 }
-         else {
-         
-         break;
-        }
-        alert("Incorrect Answer" + clickedItem);
-    }
+                else {console.log("end of game")}
+             
+            }, 2000);}
+       
     e.stopPropagation();
 }
 
+//i++;
 
- window.location.href = "question2.html";
 
-}
+// function sleep(milliseconds) {
+//     const date = Date.now();
+//     let currentDate = null;
+//     do {
+//       currentDate = Date.now();
+//     } while (currentDate - date < milliseconds);
+//   }
+
+
+
+
 
