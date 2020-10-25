@@ -16,7 +16,7 @@ var feedbackElement = document.querySelector('#feedback');
 var t = 300;
 var i = 0;
 
-let highScores = [];
+let highScores = 0;
 
 let questions = [
     {
@@ -88,6 +88,7 @@ a = setInterval(function() {
                     console.log(i);
                     //console.log(clickedItem);
                     feedbackElement.textContent = "Correct";
+                    highScores++;
                     //alert("Correct Answer " + clickedItem);
                                   }
          else {  
@@ -101,16 +102,30 @@ a = setInterval(function() {
                     i++;
                     loadQuestion(i);
                 }
-                else {console.log("end of game")}
-             
-            }, 2000);}
+                else {
+                  console.log("end of game");
+                  window.location.href = "highscores.html";}       
+            }, 1000);}
+            console.log(highScores);
        
+            if (i == (questions.length-1) || t==0){
+
+              //window.location.href = "highscores.html";
+            }
+            localStorage.setItem("high", highScores);
     e.stopPropagation();
+    console.log(highScores);
 }
+console.log(i);
+console.log(highScores);
+
+
+
 
 //i++;
 
 
+//window.location.href = "highscores.html";
 // function sleep(milliseconds) {
 //     const date = Date.now();
 //     let currentDate = null;

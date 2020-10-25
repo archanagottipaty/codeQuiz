@@ -3,4 +3,10 @@
 div {
     margin-top: 150px;
   }
+
+  nav, a { display:inline;}
+
+  #timer{ display:inline;
+  
+  margin-left: 600px;}
   

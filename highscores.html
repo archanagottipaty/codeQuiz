@@ -7,8 +7,47 @@
     <title>High Scores</title>
 </head>
 <body>
+   <p id = "high"></p>
+    <form id = "initials">
+        <input type= "text" name="name" id = "name"> </input>
+        <input type="button" onclick ="topScores()" value="Submit" id = "submit"></input>
+    </form>
 
-    <p> The high scores are: </p>
+    <script>
+            function topScores() {
+            var myForm = document.getElementById("name");
+           // console.log(myForm.elements.value);
+}
+
+        var form = document.querySelector("form");
+        
+        var highscores = {};
+        document.getElementById('submit').addEventListener('click', function(e) {
+            if (e) {
+                e.preventDefault();
+                //highscores{}
+                //console.log(form.elements.name.value);
+                var myhighScores = {
+                    name: "form.elements.name.value", 
+                    score: "100"
+                }
+                //alert("hello");
+
+            }
+        });
+
+        var displayHigh = document.querySelector("#high");
+        let highS = localStorage.getItem("high");
+        displayHigh.textContent=("All Done! Your final score is:" + highS);
+
+        var initials = document.querySelector("#initials");
+        var init = initials.text;
+        console.log(init);
+
+         
+
+
+    </script>
     
 </body>
 </html>
